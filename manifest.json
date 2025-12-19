@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "DeepSeek网页总结",
+  "version": "1.0.0",
+  "description": "自动识别网页内容并通过DeepSeek进行中文总结",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://api.deepseek.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html"
+}

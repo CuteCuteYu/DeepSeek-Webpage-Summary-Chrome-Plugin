@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepSeek网页总结</title>
+  <!-- 引入marked.js库用于渲染markdown -->
+  <script src="marked.min.js"></script>
+  <style>
+    body {
+      width: 400px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+    .container {
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #333;
+      text-align: center;
+    }
+    .input-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    .result {
+      margin-top: 15px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      max-height: 300px;
+      overflow-y: auto;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    /* Markdown样式 */
+    .result h1 {
+      font-size: 18px;
+      color: #333;
+      margin-top: 0;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+    
+    .result h2 {
+      font-size: 16px;
+      color: #444;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+    
+    .result h3 {
+      font-size: 15px;
+      color: #555;
+      margin-top: 12px;
+      margin-bottom: 6px;
+      text-align: left;
+    }
+    
+    .result p {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    
+    .result ul, .result ol {
+      margin-top: 0;
+      margin-bottom: 10px;
+      padding-left: 20px;
+    }
+    
+    .result li {
+      margin-bottom: 5px;
+    }
+    
+    .result strong {
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .result em {
+      font-style: italic;
+    }
+    
+    .result code {
+      background-color: #e8e8e8;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 13px;
+    }
+    
+    .result pre {
+      background-color: #e8e8e8;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-family: monospace;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    
+    .result blockquote {
+      border-left: 3px solid #ccc;
+      margin: 0;
+      padding-left: 10px;
+      color: #666;
+    }
+    .loading {
+      text-align: center;
+      color: #666;
+      margin: 15px 0;
+    }
+    .error {
+      color: red;
+      margin: 10px 0;
+      text-align: center;
+    }
+    .success {
+      color: green;
+      margin: 10px 0;
+      text-align: center;
+    }
+    .api-key-section {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .options-link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #666;
+      font-size: 12px;
+      text-decoration: none;
+    }
+    .options-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>DeepSeek网页总结</h1>
+    
+    <!-- API Key输入区域 -->
+    <div id="apiKeySection" class="api-key-section">
+      <div class="input-group">
+        <label for="apiKey">请输入DeepSeek API Key：</label>
+        <input type="text" id="apiKey" placeholder="sk-..." />
+      </div>
+      <button id="saveApiKey">保存API Key</button>
+      <div id="apiKeyMessage"></div>
+    </div>
+    
+    <!-- 总结按钮和结果区域 -->
+    <div id="summarySection" style="display: none;">
+      <button id="summarizeBtn">总结当前页面</button>
+      <div id="loading" class="loading" style="display: none;">
+        <p>正在总结...请稍候</p>
+      </div>
+      <div id="error" class="error" style="display: none;"></div>
+      <div id="result" class="result"></div>
+      <a href="options.html" class="options-link">修改API Key</a>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
