@@ -1,68 +1,71 @@
-# DeepSeek网页总结 Chrome插件
+# DeepSeek Webpage Summary Chrome Extension
 
-## 功能介绍
+[中文版本 (Chinese Version)](readme-zh.md)
 
-该Chrome浏览器插件可以自动识别当前网页的内容，并通过DeepSeek API进行中文总结，帮助用户快速了解网页的核心内容。
+## Features
 
-## 安装方法
+This Chrome browser extension can automatically identify the content of the current webpage and generate a Chinese summary through the DeepSeek API, helping users quickly understand the core content of the webpage.
 
-1. 下载或克隆本项目到本地
-2. 打开Chrome浏览器，进入扩展程序管理页面（chrome://extensions/）
-3. 开启"开发者模式"（通常在页面右上角）
-4. 点击"加载已解压的扩展程序"，选择本项目所在的文件夹
-5. 插件安装成功后，会在Chrome浏览器右上角出现插件图标
+## Installation
 
-## 使用说明
+1. Download or clone this project to your local machine
+2. Open Chrome browser and go to the extensions management page (chrome://extensions/)
+3. Enable "Developer mode" (usually in the top right corner of the page)
+4. Click "Load unpacked extension" and select the folder where this project is located
+5. After successful installation, the extension icon will appear in the top right corner of the Chrome browser
 
-1. 首次使用时，点击插件图标，在弹出的界面中输入DeepSeek API Key
-2. 导航到需要总结的网页
-3. 点击插件图标，然后点击"总结当前页面"按钮
-4. 等待几秒钟，插件会显示网页的中文总结结果
+## Usage
 
-## API Key管理
+1. On first use, click the extension icon and enter your DeepSeek API Key in the pop-up interface
+2. Navigate to the webpage you want to summarize
+3. Click the extension icon, then click the "Summarize current page" button
+4. Wait a few seconds, and the extension will display the Chinese summary result of the webpage
 
-- 首次使用时必须输入API Key
-- 可以通过插件选项页面修改API Key
-- 请访问DeepSeek官网获取您自己的API Key
+## API Key Management
 
-## 技术原理
+- You must enter an API Key when using it for the first time
+- You can modify the API Key through the extension options page
+- Please visit the DeepSeek official website to obtain your own API Key
 
-1. **内容提取**：插件使用`content.js`脚本提取网页的主要文本内容，过滤掉脚本、样式、广告等无关元素
-2. **API调用**：通过`background.js`脚本调用DeepSeek API，将提取的内容发送到API服务器
-3. **结果显示**：API返回总结结果后，在`popup.html`中显示给用户
+## Technical Principles
 
-## 注意事项
+1. **Content Extraction**: The extension uses the `content.js` script to extract the main text content of the webpage, filtering out irrelevant elements such as scripts, styles, and advertisements
+2. **API Call**: The `background.js` script calls the DeepSeek API, sending the extracted content to the API server
+3. **Result Display**: After the API returns the summary result, it is displayed to the user in `popup.html`
 
-- 插件需要访问互联网才能调用DeepSeek API
-- 为了保护您的API Key安全，插件使用Chrome的安全存储机制保存API Key
-- 插件仅在当前激活的标签页上工作
-- 对于非常长的网页，插件会自动截断内容，只发送前5000个字符到API
+## Notes
 
-## 文件结构
+- The extension requires internet access to call the DeepSeek API
+- To protect your API Key security, the extension uses Chrome's secure storage mechanism to save the API Key
+- The extension only works on the currently active tab
+- For very long webpages, the extension will automatically truncate the content and only send the first 5000 characters to the API
+
+## File Structure
 
 ```
-├── manifest.json      # 插件配置文件
-├── background.js      # 后台脚本，处理API请求
-├── content.js         # 网页内容提取脚本
-├── popup.html         # 插件弹出界面
-├── popup.js           # 弹出界面逻辑
-├── options.html       # 选项页面，用于API Key管理
-├── options.js         # 选项页面逻辑
-└── README.md          # 插件说明文档
+├── manifest.json      # Extension configuration file
+├── background.js      # Background script, handles API requests
+├── content.js         # Webpage content extraction script
+├── popup.html         # Extension popup interface
+├── popup.js           # Popup interface logic
+├── options.html       # Options page for API Key management
+├── options.js         # Options page logic
+├── README.md          # English documentation
+└── readme-zh.md       # Chinese documentation
 ```
 
-## 浏览器兼容性
+## Browser Compatibility
 
-- Chrome浏览器 88.0+（支持Manifest V3）
+- Chrome browser 88.0+ (supports Manifest V3)
 
-## 更新日志
+## Update Log
 
 ### v1.0.0 (2025-12-19)
-- 初始版本发布
-- 实现网页内容自动提取
-- 集成DeepSeek API进行中文总结
-- 支持API Key管理
+- Initial version release
+- Implemented automatic webpage content extraction
+- Integrated DeepSeek API for Chinese summarization
+- Added API Key management
 
-## 联系方式
+## Contact
 
-如有问题或建议，欢迎提出Issue或Pull Request。
+If you have any questions or suggestions, please feel free to raise an Issue or Pull Request.
